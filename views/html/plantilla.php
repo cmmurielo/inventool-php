@@ -21,6 +21,9 @@
             if ($_GET["accion"] == "ventas") {
                 require_once 'views/html/ventas.php';
             }
+            if ($_GET["accion"] == "agregarCliente") {
+                require_once 'views/html/formCliente.php';
+            }
         } else {
             require_once 'views/html/inicio.php';
         }

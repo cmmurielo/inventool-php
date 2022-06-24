@@ -1,16 +1,17 @@
 <div class="marca">
-    <div>
-        <p>SENA - INVENTOOL</p>
-    </div>
+    <p>SENA - INVENTOOL</p>
 </div>
 <div class="topbar">
     <div>
-        <p id="fechaActual"></p>
+        <p id="fechaActual">
+        </p>
         <script>
             window.onload = reloj();
         </script>
     </div>
-    <div>Usuario Log</div>
+    <div>
+        <p>Usuario Log</p>
+    </div>
     <div>
         <p>
             <a href="index.php?accion=logout">Salir</a>

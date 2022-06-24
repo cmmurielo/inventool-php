@@ -1,12 +1,15 @@
-<div class="contenido">
+<head>
+    <link rel="stylesheet" href="views/css/formCliente.css" />
+</head>
+
+<?php
+$mysqli = include "db.php";
+$departamentos = $mysqli->query("SELECT departamento_id, departamento FROM departamentos ORDER BY departamento ASC")->fetch_all(MYSQLI_ASSOC);
+?>
+
+<div class="contenido-formCliente">
     <div class="titulo">
         <h1>Gestion Clientes</h1>
-    </div>
-    <div class="botones">
-        <button class="" onclick="window.location.href = '/listaClientes.html'">
-            Lista de clientes
-        </button>
-        <button class="">Otra...</button>
     </div>
 
     <div class="buscar">
@@ -14,21 +17,31 @@
             Buscar cliente:
             <span><input type="text" name="buscar" placeholder="Documento, Nombre..." /></span>
         </p>
+        <button class="btn btn-primary" onclick="window.location.href = 'index.php?accion=clientes'">
+            Lista de clientes
+        </button>
     </div>
 
-    <form class="grid-form">
-        <label for="razonSocial" class="label1">Razon Solcial / Nombre: *
+    <form action="views/html/includes/registrarCliente.php" method="POST" class="grid-form">
+        <label for="nombre" class="label1">Razon Solcial / Nombre: *
         </label>
-        <input type="text" name="razonSocial" class="inputFull" required />
+        <input type="text" name="nombre" class="input1" required />
+
+        <label for="apellido" class="label2">Apellido
+        </label>
+        <input type="text" name="apellido" class="input2" required />
 
         <label for="documento" class="label1">Documento *: </label>
         <input type="number" name="documento" class="input1" required />
 
         <label for="tipoDocumento" class="label2">Tipo documento:</label>
         <select name="tipoDocumento" class="input2">
-            <option value="cc">CC</option>
-            <option value="nit">NIT</option>
-            <option value="ce">CE</option>
+            <option value="CC">CC</option>
+            <option value="NIT">NIT</option>
+            <option value="CE">CE</option>
+            <option value="PAP">PAP</option>
+            <option value="NIP">NIP</option>
+            <option value="TI">TI</option>
         </select>
 
         <label for="tipoPersona" class="label1">Tipo persona:</label>
@@ -37,22 +50,23 @@
             <option value="juridica">Juridica</option>
         </select>
 
+        <label for="departamento" class="label1">Departamento:</label>
+        <select name="departamento" id="box-departamento" class="input1" onchange="selectDepartamento()">
+            <option value='' selected disabled hidden>Elige el municipio</option>"
+            <?php
+            foreach ($departamentos as $departamento) {
+            ?>
+                <option value="<?php echo $departamento['departamento_id']; ?>"><?php echo $departamento['departamento']; ?> </option>
+            <?php } ?>
+        </select>
+
+
+        <label for="municipio" class="label2">Ciudad:</label>
+        <select name="municipio" id="box-municipio" class="input2">
+        </select>
+
         <label for="direccion" class="label1">Dirección: </label>
         <input type="text" name="direccion" class="inputFull" />
-
-        <label for="departamento" class="label1">Departamento</label>
-        <select name="departamento" class="input1">
-            <option value="risaralda">Risaralda</option>
-            <option value="caldas">Caldas</option>
-            <option value="otros">Otros...</option>
-        </select>
-
-        <label for="ciudad" class="label2">Ciudad:</label>
-        <select name="ciudad" class="input2">
-            <option value="pereira">Pereira</option>
-            <option value="manizales">Manizales</option>
-            <option value="otros">Otros...</option>
-        </select>
 
         <label for="telefono" class="label1">Telefono: *
         </label>
@@ -61,11 +75,17 @@
         <label for="email" class="label2">Email: </label>
         <input type="email" name="email" id="email" class="input2" />
 
-        <label for="rigemenFiscal" class="label1">Regimen fiscal:</label>
-        <select name="rigemenFiscal" class="inputFull">
-            <option value="otros">Otros...</option>
-        </select>
-
-        <input type="submit" value="Guardar" class="input2" />
+        <button type="submit" class="btn btn-success input2">Guardar</button>
     </form>
 </div>
+
+<script>
+    function selectDepartamento() {
+        var departamento_id = $("#box-departamento").val();
+        $.post("views/html/includes/getMunicipios.php", {
+            data: departamento_id
+        }, function(data) {
+            $("#box-municipio").html(data);
+        });
+    }
+</script>
