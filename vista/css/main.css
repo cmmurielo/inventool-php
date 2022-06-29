@@ -1,0 +1,100 @@
+html,
+body {
+    box-sizing: content-box;
+    height: 100%;
+    width: 100%;
+}
+
+.inventool {
+    padding: 2px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas:
+        "logo       topbar"
+        "menubar    contenido"
+        "footbar    footbar";
+    grid-template-columns: 180px auto;
+    grid-template-rows: 40px auto 40px;
+    grid-gap: 2px;
+}
+
+.logo {
+    grid-area: logo;
+    border-radius: 5px;
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #0e4844;
+    color: white;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+}
+
+.topbar {
+    border-radius: 5px;
+    grid-area: topbar;
+    display: flex;
+    height: 100%;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #0f6983;
+    color: white;
+}
+
+.menubar {
+    border-radius: 5px;
+    grid-area: menubar;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+    justify-content: center;
+    align-self: center;
+    border: 1px solid lightgray;
+}
+
+.menubar ul {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    list-style-type: none;
+    justify-content: space-around;
+}
+
+.menubar ul li {
+    display: flex;
+    width: 100%;
+    padding: 0 30px;
+    justify-content: left;
+}
+
+.menubar ul li:hover {
+    cursor: pointer;
+    color: black;
+}
+.menubar ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.footbar {
+    border-radius: 5px;
+    grid-area: footbar;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #34453f;
+    color: white;
+}
+
+.contenido {
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
