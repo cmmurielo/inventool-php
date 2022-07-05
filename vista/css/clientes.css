@@ -1,22 +1,22 @@
-.contenido-listaClientes {
+.contenido-clientes {
+    display: grid;
     background-color: #f1f2f7;
     width: 100%;
     height: 100%;
     margin: 0 auto 0 auto;
     padding: 16px;
-    display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 80px 50px auto;
 }
 
-.contenido-listaClientes .titulo {
+.contenido-clientes .titulo {
     grid-row: 1/2;
     justify-self: center;
     align-items: center;
     color: black;
 }
 
-.contenido-listaClientes .buscar {
+.contenido-clientes .buscar {
     grid-row: 2/3;
     display: flex;
     flex-direction: row-reverse;
@@ -26,26 +26,11 @@
     height: 40px;
 }
 
-.contenido-listaClientes .buscar p {
+.contenido-clientes .buscar p {
     float: right;
 }
 
-.contenido-listaClientes table,
-td,
-th {
-    background-color: white;
+.grid-table {
     grid-row: 3/4;
-    padding: 0 3px;
-    height: 35px;
-    border: 1px solid lightgrey;
-    border-collapse: collapse;
-    scroll-behavior: auto;
-}
-
-th {
-    text-align: center;
-}
-
-table tr td button {
-    width: 100%;
+    height: 40px;
 }

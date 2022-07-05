@@ -1,0 +1,98 @@
+html,
+body {
+    box-sizing: content-box;
+    height: 100%;
+    width: 100%;
+}
+
+.inventool {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas:
+        "logo       topbar"
+        "menubar    contenido"
+        "footbar    footbar";
+    grid-template-columns: 180px auto;
+    grid-template-rows: 40px auto 40px;
+    background-color: #f8f8f8;
+}
+
+.logo {
+    grid-area: logo;
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #a7dbd8;
+}
+
+.topbar {
+    grid-area: topbar;
+    display: flex;
+    height: 100%;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #a7dbd8;
+    color: white;
+}
+
+.menubar {
+    grid-area: menubar;
+    display: flex;
+    width: 100%;
+    justify-self: center;
+    background-color: #e8e8e8;
+}
+
+.menubar ul {
+    display: flex;
+    width: 100%;
+    padding-left: 0;
+    padding-top: 20px;
+    flex-flow: column;
+    list-style-type: none;
+    gap: 10px;
+}
+
+.menubar ul li {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.menubar ul li:hover {
+    cursor: pointer;
+    color: black;
+    background-color: #69d2e7;
+}
+.menubar ul li a {
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    height: 34px;
+    padding-left: 15px;
+}
+
+.menubar ul li a i {
+    padding: 0 5px;
+}
+
+.footbar {
+    grid-area: footbar;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    color: white;
+}
+
+.contenido {
+    grid-area: contenido;
+    display: grid;
+    padding: 1px;
+}

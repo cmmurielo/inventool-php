@@ -1,12 +1,6 @@
 <head>
-    <link rel="stylesheet" href="views/css/formCliente.css" />
+    <link rel="stylesheet" href="vista/css/formCliente.css" />
 </head>
-
-<?php
-$mysqli = include "db.php";
-$departamentos = $mysqli->query("SELECT departamento_id, departamento FROM departamentos ORDER BY departamento ASC")->fetch_all(MYSQLI_ASSOC);
-?>
-
 <div class="contenido-formCliente">
     <div class="titulo">
         <h1>Gestion Clientes</h1>
@@ -22,7 +16,7 @@ $departamentos = $mysqli->query("SELECT departamento_id, departamento FROM depar
         </button>
     </div>
 
-    <form action="views/html/includes/registrarCliente.php" method="POST" class="grid-form">
+    <form action="vista/html/includes/registrarCliente.php" method="POST" class="grid-form">
         <label for="nombre" class="label1">Razon Solcial / Nombre: *
         </label>
         <input type="text" name="nombre" class="input1" required />
@@ -50,20 +44,8 @@ $departamentos = $mysqli->query("SELECT departamento_id, departamento FROM depar
             <option value="juridica">Juridica</option>
         </select>
 
-        <label for="departamento" class="label1">Departamento:</label>
-        <select name="departamento" id="box-departamento" class="input1" onchange="selectDepartamento()">
-            <option value='' selected disabled hidden>Elige el municipio</option>"
-            <?php
-            foreach ($departamentos as $departamento) {
-            ?>
-                <option value="<?php echo $departamento['departamento_id']; ?>"><?php echo $departamento['departamento']; ?> </option>
-            <?php } ?>
-        </select>
-
-
-        <label for="municipio" class="label2">Ciudad:</label>
-        <select name="municipio" id="box-municipio" class="input2">
-        </select>
+        <label for="ciudad" class="label1">Ciudad: </label>
+        <input type="text" name="ciudad" class="inputFull" />
 
         <label for="direccion" class="label1">Dirección: </label>
         <input type="text" name="direccion" class="inputFull" />
@@ -73,19 +55,8 @@ $departamentos = $mysqli->query("SELECT departamento_id, departamento FROM depar
         <input type="text" name="telefono" class="input1" required />
 
         <label for="email" class="label2">Email: </label>
-        <input type="email" name="email" id="email" class="input2" />
+        <input type="text" name="email" id="email" class="input2" />
 
         <button type="submit" class="btn btn-success input2">Guardar</button>
     </form>
 </div>
-
-<script>
-    function selectDepartamento() {
-        var departamento_id = $("#box-departamento").val();
-        $.post("views/html/includes/getMunicipios.php", {
-            data: departamento_id
-        }, function(data) {
-            $("#box-municipio").html(data);
-        });
-    }
-</script>
