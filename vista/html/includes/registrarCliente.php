@@ -2,19 +2,19 @@
 
 $mysqli = include_once "../../../db.php";
 
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
+$nombre = strtoupper($_POST['nombre']);
+$apellido = strtoupper($_POST['apellido']);
 $documento = (int)$_POST['documento'];
 $tipoDocumento = $_POST['tipoDocumento'];
 $tipoPersona = $_POST['tipoPersona'];
-$departamento = $_POST['departamento'];
-$municipio = (int)$_POST['municipio'];
-$direccion = $_POST['direccion'];
+$ciudad = $_POST['ciudad'];
+$direccion = strtoupper($_POST['direccion']);
 $telefono = $_POST['telefono'];
-$email = $_POST['email'];
+$email = strtolower($_POST['email']);
 
-echo $documento . $tipoDocumento . $nombre . $apellido . $telefono . $email . $municipio . $direccion;
+echo $documento . $tipoDocumento . $nombre . $apellido . $telefono . $email . $ciudad . $direccion;
 
-$mysqli->query("INSERT INTO clientes (cliente_documento, tipoDocumento, nombre, apellido, telefono, email, municipio_id, direccion) VALUES ('$documento','$tipoDocumento','$nombre','$apellido','$telefono','$email','$municipio','$direccion')");
+$mysqli->query("REPLACE INTO clientes (documento, tipoDocumento, nombre, apellido, telefono, email, ciudad, direccion)
+                VALUES ('$documento','$tipoDocumento','$nombre','$apellido','$telefono','$email','$ciudad','$direccion')");
 
 header("Location:" . 'http://localhost/inventool-php/index.php?accion=clientes');
