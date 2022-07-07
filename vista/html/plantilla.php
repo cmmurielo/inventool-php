@@ -32,8 +32,8 @@
             <ul>
                 <li><a href="index.php"><i class="bi bi-house"></i> Pagina principal</a></li>
                 <li><a href="index.php?accion=clientes"><i class=" bi bi-people-fill"></i> Clientes</a></li>
-                <li><a href="#"><i class="bi bi-building"></i> Proveedores</a></li>
-                <li><a href="#"><i class="bi bi-tools"></i> Productos</a></li>
+                <li><a href="index.php?accion=proveedores"><i class="bi bi-building"></i> Proveedores</a></li>
+                <li><a href="index.php?accion=productos"><i class="bi bi-tools"></i> Productos</a></li>
                 <li><a href="#"><i class="bi bi-cart3"></i> Ventas</a></li>
             </ul>
 
@@ -47,19 +47,22 @@
                     require_once 'vista/html/cliente/clientes.php';
                 }
                 if ($_GET["accion"] == "productos") {
-                    require_once 'vista/html/productos.php';
+                    require_once 'vista/html/producto/productos.php';
                 }
                 if ($_GET["accion"] == "proveedores") {
-                    require_once 'vista/html/proveedores.php';
+                    require_once 'vista/html/proveedor/proveedores.php';
                 }
                 if ($_GET["accion"] == "ventas") {
-                    require_once 'vista/html/ventas.php';
+                    require_once 'vista/html/ventas/ventas.php';
                 }
                 if ($_GET["accion"] == "agregarCliente") {
                     require_once 'vista/html/cliente/formCliente.php';
                 }
-                if ($_GET["accion"] == "editarCliente") {
-                    require_once 'vista/html/cliente/editarCliente.php';
+                if ($_GET["accion"] == "agregarProveedor") {
+                    require_once 'vista/html/proveedor/formProveedor.php';
+                }
+                if ($_GET["accion"] == "agregarProducto") {
+                    require_once 'vista/html/producto/formProducto.php';
                 }
             } else {
                 require_once 'vista/html/home.php';

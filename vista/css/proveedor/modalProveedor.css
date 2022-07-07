@@ -1,0 +1,14 @@
+.modal-body {
+    display: grid;
+}
+
+.model-formCliente {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 5px;
+    align-items: center;
+}
+
+.form-label {
+    text-align: right;
+}

@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="vista/css/formCliente.css" />
+    <link rel="stylesheet" href="vista/css/cliente/formCliente.css" />
 </head>
 <div class="contenido-formCliente">
     <div class="titulo">
@@ -40,8 +40,8 @@
 
         <label for="tipoPersona" class="label1">Tipo persona:</label>
         <select name="tipoPersona" class="inputFull">
-            <option value="natural">Natural</option>
-            <option value="juridica">Juridica</option>
+            <option value="NATURAL">NATURAL</option>
+            <option value="JURIDICA">JURÍDICA</option>
         </select>
 
         <label for="ciudad" class="label1">Ciudad: </label>
