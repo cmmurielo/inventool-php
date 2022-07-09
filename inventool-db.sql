@@ -26,7 +26,7 @@ CREATE TABLE `categorias` (
   `categoria_id` int unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`categoria_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1666 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=1670 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,6 +35,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
+INSERT INTO `categorias` VALUES (1666,'Accesorios Destornilladores Eléctricos'),(1667,'Sierras Eléctricas y Accesorios'),(1668,'Sierras Circulares y Sable'),(1669,'Herramientas Eléctricas e Inalámbricas');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,14 +188,14 @@ DROP TABLE IF EXISTS `productos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `productos` (
   `producto_codigo` bigint unsigned NOT NULL,
-  `nombre` varchar(45) NOT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `descripcion` varchar(500) DEFAULT NULL,
   `costo` float NOT NULL,
   `saldoBodega` int NOT NULL,
   `cantidadMinima` int NOT NULL,
   `cantidadMaxima` int NOT NULL,
   `imagen` varchar(255) DEFAULT NULL,
-  `categoria_id` int unsigned NOT NULL,
+  `categoria_id` int unsigned DEFAULT NULL,
   PRIMARY KEY (`producto_codigo`),
   UNIQUE KEY `codigo_UNIQUE` (`producto_codigo`),
   KEY `fk_categorias_id_categoria_idx` (`categoria_id`),
@@ -208,6 +209,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
+INSERT INTO `productos` VALUES (268413,'Set Puntas Touch Case 18 Piezas Ref DW2174','Incluye: 18 piezas - (1) Guía magnética compacta - (3) puntas de 3-1/2 pulgadas: Cruz #1 y #2, Cuadrada SQ\" - (6) Puntas de 2 pulgadas: Cruz #2 (5 piezas), Cuadrada SQ2 - (8) Puntas de 1 pulgada: Cruz #1, #2 (2 piezas) y #3, Plana SL8 (2 piezas), Cuadrada SQ2 (2 piezas) - Estuche Plástico',55900,9,2,10,'268413.jpg',1666),(543292,'SIERRA CIRCULAR 7-1/4-PULG 20V SIN BATERíA DEWALT','Sierra Circular 7-1/4-pulg 20V Sin Batería Dewalt | Herramientas y Maquinarias\r\n',989000,2,1,5,'543292.jpg',1667);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,7 +241,7 @@ CREATE TABLE `proveedores` (
 
 LOCK TABLES `proveedores` WRITE;
 /*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
-INSERT INTO `proveedores` VALUES (8914088230,'NIT','JURIDICA',' NORMARH S A S','6063363365','mail@mail.com','PEREIRA','AV 30 DE AGOSTO 37 65 , PEREIRA, RISARALDA');
+INSERT INTO `proveedores` VALUES (8914088230,'NIT','JURIDICA',' NORMARH S A S','6063363365','mail@mail.com','PEREIRA','AV 30 DE AGOSTO 37 65 , PEREIRA, RISARALDA, COLOMBIA');
 /*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,4 +283,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-06 20:51:25
+-- Dump completed on 2022-07-08 22:27:33
