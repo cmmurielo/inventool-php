@@ -69,7 +69,7 @@ $rows = $resultado->fetch_all(MYSQLI_ASSOC);
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="vista/html/includes/registrarProveedor.php" method="POST" class="grid-form" id="edit-form">
+                    <form action="vista/html/proveedor/editarProveedor.php" method="POST" class="grid-form" id="edit-form">
 
                         <label for="nombre" class="form-label label1">Razon Solcial / Nombre: *
                         </label>
@@ -86,7 +86,7 @@ $rows = $resultado->fetch_all(MYSQLI_ASSOC);
                         </select>
 
                         <label for="documento" class="form-label label2">Documento: * </label>
-                        <input type="number" id="documento" name="documento" class="form-control input2" disabled required />
+                        <input type="number" id="documento" name="documento" class="form-control input2" readonly />
 
 
                         <label for="tipoPersona" class="form-label">Tipo persona:</label>

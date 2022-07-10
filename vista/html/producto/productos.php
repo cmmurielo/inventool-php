@@ -80,10 +80,10 @@ $rowsCategoria = $resultadoCategoria->fetch_all(MYSQLI_ASSOC);
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="vista/html/includes/registrarProveedor.php" method="POST" class="grid-form" id="edit-form">
+                    <form action="vista/html/producto/editarProducto.php" method="POST" class="grid-form" id="edit-form" enctype="multipart/form-data">
 
                         <label for="producto_codigo" class="form-label label1">Codigo: *</label>
-                        <input type="number" id="producto_codigo" name="producto_codigo" class="form-control input1" required />
+                        <input type="number" id="producto_codigo" name="producto_codigo" class="form-control input1" readonly />
 
                         <label for="nombre" class="form-label label2">Nombre: * </label>
                         <input type="text" name="nombre" id="nombre" class="form-control input2" required />

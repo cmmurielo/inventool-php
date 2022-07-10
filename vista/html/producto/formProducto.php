@@ -24,7 +24,7 @@ $rowsCategoria = $resultadoCategoria->fetch_all(MYSQLI_ASSOC);
         </button>
     </div>
 
-    <form action="vista/html/includes/registrarProducto.php" method="POST" class="grid-form">
+    <form action="vista/html/includes/registrarProducto.php" method="POST" class="grid-form" enctype="multipart/form-data">
 
         <label for="producto_codigo" class="form-label label1">Codigo: *</label>
         <input type="number" id="producto_codigo" name="producto_codigo" class="form-control input1" required />
