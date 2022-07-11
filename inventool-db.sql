@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `inventool` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `inventool`;
 -- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: inventool
@@ -67,7 +69,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1053808142,'CC','NATURAL','LUISA FERNANDA','BUCURU','3134351212','lfbucuru@mail.com','manizales','CRA 35 105 87'),(1053812639,'CC','NATURAL','CARLOS MARIO','MURIEL','3117766871','cmmurielo@gmail.com','DOSQUEBRADAS','MZ D CASA 8, ALTOS DE LA SOLEDAD');
+INSERT INTO `clientes` VALUES (1053808142,'CC','NATURAL','LUISA FERNANDA','BUCURU','3134351212','lfbucuru@mail.com','MANIZALES','CRA 35 # 105 - 87'),(1053812639,'CC','NATURAL','CARLOS MARIO','MURIEL','3117766871','cmmurielo@gmail.com','DOSQUEBRADAS','MZ D CASA 8, ALTOS DE LA SOLEDAD');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,9 +140,9 @@ DROP TABLE IF EXISTS `perfiles`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `perfiles` (
   `perfil_id` int NOT NULL AUTO_INCREMENT,
-  `nombre` enum('ADMIN','VENDEDOR') NOT NULL,
+  `nombre` enum('ADMIN','VENDEDOR','GERENTE','INVENTARIO') NOT NULL,
   PRIMARY KEY (`perfil_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,6 +151,7 @@ CREATE TABLE `perfiles` (
 
 LOCK TABLES `perfiles` WRITE;
 /*!40000 ALTER TABLE `perfiles` DISABLE KEYS */;
+INSERT INTO `perfiles` VALUES (1,'ADMIN'),(2,'VENDEDOR'),(3,'INVENTARIO');
 /*!40000 ALTER TABLE `perfiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,7 +244,7 @@ CREATE TABLE `proveedores` (
 
 LOCK TABLES `proveedores` WRITE;
 /*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
-INSERT INTO `proveedores` VALUES (8914088230,'NIT','JURIDICA',' NORMARH S A S','6063363365','mail@mail.com','PEREIRA','AV 30 DE AGOSTO 37 65 , PEREIRA, RISARALDA, COLOMBIA');
+INSERT INTO `proveedores` VALUES (8914088230,'NIT','JURIDICA',' NORMARH S A S','6063363365','mail@mail.com','PEREIRA','AV 30 DE AGOSTO 37 65 , PEREIRA, RISARALDA');
 /*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -271,6 +274,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES ('admin','admin','ADMINISTRADOR',NULL,1),('invetario1','inventario1','INVENTARIO 1','',3),('vendedor1','vendedor1','VENDEDOR 1','',2);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -283,4 +287,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-10  0:33:20
+-- Dump completed on 2022-07-10 19:01:43
