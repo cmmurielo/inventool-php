@@ -26,21 +26,21 @@ $rows = $resultado->fetch_all(MYSQLI_ASSOC);
             Agregar Proveedor
         </button>
     </div>
-    <table class="table table-striped grid-table">
+    <table class="table table-sm table-bordered grid-table">
         <thead>
             <tr>
-                <th>Documento</th>
-                <th>T Persona</th>
-                <th>Nombre</th>
-                <th>Teléfono</th>
-                <th>Email</th>
-                <th>Ciudad</th>
-                <th>Dirección</th>
-                <th colspan="2">Opciones</th>
+                <th scope="col">Documento</th>
+                <th scope="col">T Persona</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Email</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Dirección</th>
+                <th scope="col" colspan="2">Opciones</th>
             </tr>
         </thead>
 
-        <tbody>
+        <tbody class="table-group-divider">
             <?php
             foreach ($rows as $row) {
             ?>

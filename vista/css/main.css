@@ -1,5 +1,7 @@
 html,
 body {
+    margin: 0;
+    padding: 0;
     box-sizing: content-box;
     height: 100%;
     width: 100%;
@@ -26,7 +28,7 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    background-color: #a7dbd8;
+    background-color: #69d2e7;
 }
 
 .topbar {
@@ -34,10 +36,16 @@ body {
     display: flex;
     height: 100%;
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
-    background-color: #a7dbd8;
-    color: white;
+    background-color: #69d2e7;
+    color: black;
+    gap: 5px;
+}
+
+.logout {
+    height: 40px;
+    border: 1px solid #333;
 }
 
 .menubar {

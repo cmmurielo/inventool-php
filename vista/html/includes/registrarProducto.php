@@ -3,10 +3,6 @@
 include_once($_SERVER['DOCUMENT_ROOT'] . '/inventool-php/dirs.php');
 $mysqli = include(ROOT_PATH . "db.php");
 
-print_r($_FILES);
-
-
-
 $directorio_imagen = FILES_PATH . 'productos/';
 $nombre_imagen = $_FILES['imagen']['name'];
 $tipo_imagen = $_FILES['imagen']['type'];
@@ -22,8 +18,6 @@ $saldoBodega = (int)$_POST['saldoBodega'];
 $cantidadMinima = (int)$_POST['cantidadMinima'];
 $cantidadMaxima = (int)$_POST['cantidadMaxima'];
 $categoria_id = (int)$_POST['categoria_id'];
-
-echo $producto_codigo . ' / ' . $nombre . ' / ' . $descripcion . ' / ' . $costo . ' / ' . $saldoBodega . ' / ' . $cantidadMinima . ' / ' . $cantidadMaxima . ' / ' . $categoria_id . ' / ' . $nombre_imagen;
 
 $mysqli->query("INSERT INTO productos (producto_codigo, nombre, descripcion, costo, saldoBodega, cantidadMinima, cantidadMaxima, categoria_id, imagen)
                 VALUES ('$producto_codigo','$nombre', '$descripcion', '$costo','$saldoBodega','$cantidadMinima','$cantidadMaxima','$categoria_id' , '$nombre_imagen')");

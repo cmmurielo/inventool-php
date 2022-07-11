@@ -56,9 +56,14 @@ body {
     font-size: larger;
 }
 
-.formulario input[type="submit"] {
+.formulario button {
     background-color: #f38630;
     color: white;
+    height: 40px;
+    width: 200px;
+    font-size: larger;
+    border: 0px;
+    border-radius: 3px;
 }
 
 .footer-login {

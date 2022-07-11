@@ -30,28 +30,28 @@ $rowsCategoria = $resultadoCategoria->fetch_all(MYSQLI_ASSOC);
             Agregar producto
         </button>
     </div>
-    <table class="table table-striped grid-table">
+
+    <table class="table table-sm table-bordered grid-table">
         <thead>
             <tr>
-                <th>COD</th>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Valor</th>
-                <th>Saldo Bodega</th>
-                <th>C Minima</th>
-                <th>C Maxima</th>
-                <th>Categoria</th>
-                <th>Imagen</th>
+                <th scope="col">COD</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Saldo Bodega</th>
+                <th scope="col">C Minima</th>
+                <th scope="col">C Maxima</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Imagen</th>
                 <th colspan="2">Opciones</th>
             </tr>
         </thead>
-
-        <tbody>
+        <tbody class="table-group-divider">
             <?php
             foreach ($rowsProducto as $row) {
             ?>
                 <tr>
-                    <td> <?php echo $row['producto_codigo']; ?></td>
+                    <td scope="row"> <?php echo $row['producto_codigo']; ?></td>
                     <td> <?php echo $row['nombre']; ?></td>
                     <td> <?php echo $row['descripcion']; ?></td>
                     <td> <?php echo $row['costo']; ?></td>
@@ -69,7 +69,6 @@ $rowsCategoria = $resultadoCategoria->fetch_all(MYSQLI_ASSOC);
             <?php } ?>
         </tbody>
     </table>
-
 
     <!-- Modal edit -->
     <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">

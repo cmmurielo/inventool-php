@@ -10,6 +10,10 @@ $mysqli = include(ROOT_PATH . "db.php");
 
 $resultado = $mysqli->query("SELECT * FROM clientes");
 $rows = $resultado->fetch_all(MYSQLI_ASSOC);
+
+$perfiles = $mysqli->query("SELECT * FROM perfiles");
+$rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
+
 ?>
 
 
@@ -27,27 +31,27 @@ $rows = $resultado->fetch_all(MYSQLI_ASSOC);
             Agregar Cliente
         </button>
     </div>
-    <table class="table table-striped grid-table">
+    <table class="table table-sm table-bordered grid-table">
         <thead>
             <tr>
-                <th>Documento</th>
-                <th>T Documento</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Teléfono</th>
-                <th>Email</th>
-                <th>Ciudad</th>
-                <th>Dirección</th>
-                <th colspan="2">Opciones</th>
+                <th scope="col">Documento</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Email</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Dirección</th>
+                <th scope="col" colspan="2">Opciones</th>
             </tr>
         </thead>
 
-        <tbody>
+        <tbody class="table-group-divider">
             <?php
             foreach ($rows as $row) {
             ?>
                 <tr>
-                    <td> <?php echo $row['documento']; ?></td>
+                    <td scope="row"> <?php echo $row['documento']; ?></td>
                     <td> <?php echo $row['tipoDocumento']; ?></td>
                     <td> <?php echo $row['nombre']; ?></td>
                     <td> <?php echo $row['apellido']; ?></td>
