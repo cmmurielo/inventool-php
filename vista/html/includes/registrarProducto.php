@@ -17,7 +17,11 @@ $costo = (int)($_POST['costo']);
 $saldoBodega = (int)$_POST['saldoBodega'];
 $cantidadMinima = (int)$_POST['cantidadMinima'];
 $cantidadMaxima = (int)$_POST['cantidadMaxima'];
+$proveedor_id = (int)$_POST['proveedor_id'];
 $categoria_id = (int)$_POST['categoria_id'];
+
+$mysqli->query("INSERT INTO producto_proveedor (producto_codigo, proveedor_documento)
+                VALUES ('$producto_codigo','$proveedor_id'");
 
 $mysqli->query("INSERT INTO productos (producto_codigo, nombre, descripcion, costo, saldoBodega, cantidadMinima, cantidadMaxima, categoria_id, imagen)
                 VALUES ('$producto_codigo','$nombre', '$descripcion', '$costo','$saldoBodega','$cantidadMinima','$cantidadMaxima','$categoria_id' , '$nombre_imagen')");

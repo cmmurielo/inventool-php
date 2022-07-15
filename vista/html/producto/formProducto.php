@@ -5,9 +5,10 @@ $mysqli = include(ROOT_PATH . "db.php");
 
 $resultadoCategoria = $mysqli->query("SELECT * FROM categorias");
 $rowsCategoria = $resultadoCategoria->fetch_all(MYSQLI_ASSOC);
+
+$resultadoProveedor = $mysqli->query("SELECT * FROM proveedores");
+$rowsProveedor = $resultadoProveedor->fetch_all(MYSQLI_ASSOC);
 ?>
-
-
 
 <head>
     <link rel="stylesheet" href="vista/css/producto/formProducto.css" />
@@ -47,8 +48,19 @@ $rowsCategoria = $resultadoCategoria->fetch_all(MYSQLI_ASSOC);
         <label for="cantidadMaxima" class="form-label label2">Cant. Maxima: *</label>
         <input type="number" id="cantidadMaxima" name="cantidadMaxima" class="form-control input2" required />
 
-        <label for="categoria_id" class="form-label label1">Tipo nombre:</label>
-        <select name="categoria_id" id="categoria_id" class="form-select input1">
+        <label for="proveedor_id" class="form-label label1">Tipo nombre:</label>
+        <select name="proveedor_id" id="proveedor_id" class="form-select input1">
+            <option value="">Selecciona el proveedor</option>
+            <?php
+            foreach ($rowsProveedor as $rowProveedor) {
+                echo '<option value="' . $rowProveedor['documento'] . '">' . $rowProveedor['nombre'] . '</option>';
+            }
+            ?>
+
+        </select>
+
+        <label for="categoria_id" class="form-label label2">Tipo nombre:</label>
+        <select name="categoria_id" id="categoria_id" class="form-select input2">
             <option value="">Selecciona la categoria</option>
             <?php
             foreach ($rowsCategoria as $row) {
