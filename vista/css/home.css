@@ -2,36 +2,52 @@
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-rows: 1fr 2fr;
-    align-items: center;
+    height: 100%;
+    grid-template-rows: 1fr 1fr;
 }
 
 .productos {
+    padding-top: 16px;
     grid-row: 1/2;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
+    gap: 5px;
 }
 
 .ventas {
+    padding-top: 16px;
     grid-row: 2/3;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
+    gap: 5px;
 }
 
 .card {
-    width: 400px;
+    width: 300px;
     height: 200px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.card-body {
+    padding: 0;
 }
 
 .card-title {
+    height: 50px;
     display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0 20px;
     justify-content: center;
+    align-content: center;
 }
 
 .card-text {
     display: flex;
+    height: calc(200px - 50px);
+    align-items: center;
     font-size: 3vw;
     justify-content: center;
 }

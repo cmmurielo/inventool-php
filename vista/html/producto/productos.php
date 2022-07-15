@@ -7,11 +7,30 @@
 include_once($_SERVER['DOCUMENT_ROOT'] . '/inventool-php/dirs.php');
 $mysqli = include(ROOT_PATH . "db.php");
 
-$resultadoProducto = $mysqli->query("SELECT * FROM productos");
+$resultadoProducto = $mysqli->query("SELECT
+                                    p.producto_codigo,
+                                    p.nombre,
+                                    p.descripcion,
+                                    p.costo,
+                                    p.saldoBodega,
+                                    p.cantidadMinima,
+                                    p.cantidadMaxima,
+                                    p.imagen,
+                                    p.categoria_id,
+                                    c.nombre AS categoriaNombre,
+                                    pv.documento AS proveedorDocumento,
+                                    pv.nombre AS proveedorNombre
+                                    FROM productos p
+                                    INNER JOIN categorias c ON c.categoria_id = p.categoria_id
+                                    INNER JOIN producto_proveedor pp ON pp.producto_codigo = p.producto_codigo
+                                    INNER JOIN proveedores pv ON pv.documento = pp.proveedor_documento");
 $rowsProducto = $resultadoProducto->fetch_all(MYSQLI_ASSOC);
 
 $resultadoCategoria = $mysqli->query("SELECT * FROM categorias");
 $rowsCategoria = $resultadoCategoria->fetch_all(MYSQLI_ASSOC);
+
+$resultadoProveedor = $mysqli->query("SELECT * FROM proveedores");
+$rowsProveedor = $resultadoProveedor->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
@@ -38,9 +57,10 @@ $rowsCategoria = $resultadoCategoria->fetch_all(MYSQLI_ASSOC);
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Valor</th>
-                <th scope="col">Saldo Bodega</th>
-                <th scope="col">C Minima</th>
-                <th scope="col">C Maxima</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Min</th>
+                <th scope="col">Max</th>
+                <th scope="col">Proveedor</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Imagen</th>
                 <th colspan="2">Opciones</th>
@@ -58,7 +78,8 @@ $rowsCategoria = $resultadoCategoria->fetch_all(MYSQLI_ASSOC);
                     <td> <?php echo $row['saldoBodega']; ?></td>
                     <td> <?php echo $row['cantidadMinima']; ?></td>
                     <td> <?php echo $row['cantidadMaxima']; ?></td>
-                    <td> <?php echo $row['categoria_id']; ?></td>
+                    <td> <?php echo $row['proveedorNombre']; ?></td>
+                    <td> <?php echo $row['categoriaNombre']; ?></td>
                     <td>
                         <img src="vista/images/productos/<?php echo $row['imagen']; ?>" height="100px">
                     </td>
@@ -101,6 +122,17 @@ $rowsCategoria = $resultadoCategoria->fetch_all(MYSQLI_ASSOC);
 
                         <label for="cantidadMaxima" class="form-label label2">Cant. Maxima: *</label>
                         <input type="number" id="cantidadMaxima" name="cantidadMaxima" class="form-control input2" required />
+
+                        <label for="proveedor_id" class="form-label label1">Tipo nombre:</label>
+                        <select name="proveedor_id" id="proveedor_id" class="form-select input1">
+                            <option value="">Selecciona el proveedor</option>
+                            <?php
+                            foreach ($rowsProveedor as $rowProveedor) {
+                                echo '<option value="' . $rowProveedor['documento'] . '">' . $rowProveedor['nombre'] . '</option>';
+                            }
+                            ?>
+
+                        </select>
 
                         <label for="categoria_id" class="form-label label1">Tipo nombre:</label>
                         <select name="categoria_id" id="categoria_id" class="form-select input1">
@@ -164,6 +196,7 @@ $rowsCategoria = $resultadoCategoria->fetch_all(MYSQLI_ASSOC);
             $("#edit-form [name='saldoBodega']").val(response[0].saldoBodega);
             $("#edit-form [name='cantidadMinima']").val(response[0].cantidadMinima);
             $("#edit-form [name='cantidadMaxima']").val(response[0].cantidadMaxima);
+            $("#edit-form [name='proveedor_id']").val(response[0].proveedorDocumento);
             $("#edit-form [name='categoria_id']").val(response[0].categoria_id);
             $("#edit-form [name='imagen']").val(response[0].imagen);
         });

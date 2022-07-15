@@ -58,6 +58,21 @@ foreach ($productosRows as $productoRow) {
                 <?php echo '<p class="card-text"> $ 999.999</p>' ?>
             </div>
         </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Ventas Dia</h5>
+                <?php echo '<p class="card-text"> $ 999.999</p>' ?>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Ventas Dia</h5>
+                <?php echo '<p class="card-text"> $ 999.999</p>' ?>
+            </div>
+        </div>
+
+
     </div>
 
 </div>

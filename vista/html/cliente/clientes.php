@@ -1,6 +1,5 @@
 <head>
     <link rel="stylesheet" href="vista/css/cliente/clientes.css" />
-    <link rel="stylesheet" href="vista/css/cliente/formCliente.css" />
     <link rel="stylesheet" href="vista/css/cliente/modalCliente.css" />
 </head>
 

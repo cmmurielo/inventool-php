@@ -102,5 +102,4 @@ body {
 .contenido {
     grid-area: contenido;
     display: grid;
-    padding: 1px;
 }
