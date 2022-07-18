@@ -67,7 +67,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1053808142,'CC','NATURAL','LUISA FERNANDA','BUCURU','3134351212','lfbucuru@mail.com','MANIZALES','CRA 35 # 105 - 87'),(1053812639,'CC','NATURAL','CARLOS MARIO','MURIEL','3117766871','cmmurielo@gmail.com','DOSQUEBRADAS','MZ D CASA 8, ALTOS DE LA SOLEDAD');
+INSERT INTO `clientes` VALUES (1053808142,'CC','NATURAL','LUISA FERNANDA','BUCURU','3134351212','lfbucuru@mail.com','MANIZALES','CRA 35 # 105 - 87'),(1053812639,'CC','NATURAL','CARLOS MARIO','MURIEL GALVIS','3117766871','cmmurielo@gmail.com','DOSQUEBRADAS','MZ D CS 8, ALTOS DE LA SOLEDAD');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,6 +177,7 @@ CREATE TABLE `producto_proveedor` (
 
 LOCK TABLES `producto_proveedor` WRITE;
 /*!40000 ALTER TABLE `producto_proveedor` DISABLE KEYS */;
+INSERT INTO `producto_proveedor` VALUES (268413,8914088230),(543292,9013382970);
 /*!40000 ALTER TABLE `producto_proveedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,6 +231,7 @@ CREATE TABLE `proveedores` (
   `email` varchar(45) DEFAULT NULL,
   `ciudad` varchar(45) DEFAULT NULL,
   `direccion` varchar(80) DEFAULT NULL,
+  `estado` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`documento`),
   UNIQUE KEY `documento_UNIQUE` (`documento`),
   UNIQUE KEY `email_UNIQUE` (`email`)
@@ -242,7 +244,7 @@ CREATE TABLE `proveedores` (
 
 LOCK TABLES `proveedores` WRITE;
 /*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
-INSERT INTO `proveedores` VALUES (8914088230,'NIT','JURIDICA',' NORMARH S A S','6063363365','mail@mail.com','PEREIRA','AV 30 DE AGOSTO 37 65 , PEREIRA, RISARALDA');
+INSERT INTO `proveedores` VALUES (8914088230,'NIT','JURIDICA',' NORMARH S A S','6063363365','mail@mail.com','PEREIRA','AV 30 DE AGOSTO 37 65 , PEREIRA, RISARALDA',1),(9013382970,'NIT','NATURAL','MULTIEQUIPOS EL PROVEEDOR SAS','313 2749600','mail1@mail.com','BOGOTÁ','CL. 11 #14-62',1);
 /*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -272,7 +274,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES ('admin','admin','ADMINISTRADOR',NULL,1),('invetario1','inventario1','INVENTARIO 1','',3),('vendedor1','vendedor1','VENDEDOR 1','',2);
+INSERT INTO `usuarios` VALUES ('admin','$2y$10$4g5g7hT9N4zb.zvsIzDl/uwuueq9sI0ndNTGhbQIpY6AvLDvyjPFG','USUARIO ADMINISTRADOR','',1),('inventario','$2y$10$xwnmm3l38sH5G0XvxD8KYuHABij2kocFOUtsqkBo1IAJtMZtGmDsO','USUARIO INVENTARIO','',3),('ventas','$2y$10$WajwmWN5CtU3qi9B3.V9eucqSIDru0zaHj5jBhor8DaQeN7dMrlae','USUARIO VENTAS','',2);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -285,4 +287,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-11 20:27:57
+-- Dump completed on 2022-07-17 20:11:28
