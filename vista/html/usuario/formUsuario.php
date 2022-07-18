@@ -17,7 +17,7 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
 
     <div class="botonera">
 
-        <button class="btn btn-primary" onclick="window.location.href = 'index.php?accion=proveedores'">
+        <button class="btn btn-primary" onclick="window.location.href = 'index.php?accion=usuarios'">
             Lista de usuarios
         </button>
     </div>
@@ -37,7 +37,7 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
         <input type="text" name="apellido" id="apellido" class="form-control">
 
         <label for="perfil" class="form-label">Perfil: </label>
-        <select name="perfil" id="perfil" class="form-control">
+        <select name="perfil" id="perfil" class="form-control" required>
             <option value="">Seleccione el perfil</option>
             <?php
             foreach ($rowsPerfiles as $perfil) {

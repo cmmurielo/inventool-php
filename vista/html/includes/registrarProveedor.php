@@ -12,8 +12,6 @@ $email = strtolower($_POST['email']);
 $ciudad = strtoupper($_POST['ciudad']);
 $direccion = strtoupper($_POST['direccion']);
 
-echo $documento . ' / ' . $tipoPersona . ' / ' . $tipoDocumento . ' / ' . $nombre . ' / ' . $telefono . ' / ' . $email . ' / ' . $ciudad . ' / ' . $direccion;
-
 $mysqli->query("INSERT INTO proveedores (documento, tipoPersona, tipoDocumento, nombre, telefono, email, ciudad, direccion)
                 VALUES ('$documento','$tipoPersona', '$tipoDocumento', '$nombre','$telefono','$email','$ciudad','$direccion')");
 

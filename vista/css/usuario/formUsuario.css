@@ -1,4 +1,4 @@
-.contenido-formProveedor {
+.contenido-formUsuario {
     padding: 0 16px 16px 16px;
     display: grid;
     width: 100%;
@@ -36,9 +36,9 @@
     gap: 5px;
 }
 
-.grid-form input {
+/* .grid-form input {
     text-transform: uppercase;
-}
+} */
 
 .form-label {
     text-align: right;

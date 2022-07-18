@@ -59,7 +59,7 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
                     <td> <?php echo $row['ciudad']; ?></td>
                     <td> <?php echo $row['direccion']; ?></td>
                     <td><a class="btn btn-primary editbtn" onclick="selectCliente(<?php echo $row['documento']; ?>)" data-bs-toggle="modal" data-bs-target="#editarModal"><i class="bi bi-pencil"></i></a></td>
-                    <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#borrarModal"><i class="bi bi-trash"></i></button></td>
+                    <td><button class="btn btn-danger" onclick="delCliente('<?php echo $row['documento']; ?>')" data-bs-toggle="modal" data-bs-target="#borrarModal"><i class="bi bi-trash"></i></button></td>
                 </tr>
             <?php } ?>
         </tbody>
@@ -137,21 +137,27 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>¿Desea eliminar el elemento?</p>
+                    <form action="vista/html/cliente/eliminarCliente.php" method="post" id="delete-form">
+                        <p>¿Desea eliminar el elemento?</p>
+                        <input type="hidden" name="delete_id" class="delete_id">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <a class="btn btn-danger" href="vista/html/cliente/eliminarCliente.php?id=<?php echo $row['cliente_documento']; ?>">Eliminar</a>
+                    <button class="btn btn-danger" type="submit">Eliminar</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 <script>
-    function selectCliente(document_id) {
+    function delCliente(id) {
+        var documento = id
+        $("#delete-form [name='delete_id']").val(documento);
+    }
 
+    function selectCliente(document_id) {
         var cliente_documento = document_id
         console.log(cliente_documento);
         $.post("vista/html/includes/getCliente.php", {

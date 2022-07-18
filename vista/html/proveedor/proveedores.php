@@ -9,6 +9,8 @@ $mysqli = include(ROOT_PATH . "db.php");
 
 $resultado = $mysqli->query("SELECT * FROM proveedores");
 $rows = $resultado->fetch_all(MYSQLI_ASSOC);
+$estado = 1;
+
 ?>
 
 
@@ -36,6 +38,7 @@ $rows = $resultado->fetch_all(MYSQLI_ASSOC);
                 <th scope="col">Email</th>
                 <th scope="col">Ciudad</th>
                 <th scope="col">Dirección</th>
+                <th scope="col">Estado</th>
                 <th scope="col" colspan="2">Opciones</th>
             </tr>
         </thead>
@@ -52,8 +55,17 @@ $rows = $resultado->fetch_all(MYSQLI_ASSOC);
                     <td> <?php echo $row['email']; ?></td>
                     <td> <?php echo $row['ciudad']; ?></td>
                     <td> <?php echo $row['direccion']; ?></td>
+                    <td class="estado_activo">
+                        <?php
+                        if ($row['estado'] == 1) {
+                            echo 'Activo';
+                        } else {
+                            echo 'Inactivo';
+                        }
+                        ?>
+                    </td>
                     <td><a class="btn btn-primary editbtn" onclick="selectProveedor(<?php echo $row['documento']; ?>)" data-bs-toggle="modal" data-bs-target="#editarModal"><i class="bi bi-pencil"></i></a></td>
-                    <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#borrarModal"><i class="bi bi-trash"></i></button></td>
+                    <td><button class="btn btn-danger" onclick="delProveedor('<?php echo $row['documento']; ?>')" data-bs-toggle="modal" data-bs-target="#borrarModal"><i class="bi bi-trash"></i></button></td>
                 </tr>
             <?php } ?>
         </tbody>
@@ -107,6 +119,14 @@ $rows = $resultado->fetch_all(MYSQLI_ASSOC);
                         <label for="email" class="form-label label2">Email: </label>
                         <input type="text" id="email" name="email" id="email" class="form-control input2" />
 
+                        <br>
+
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="estado" value="1" <?php echo ($row['estado'] == 1) ? 'checked' : ""; ?>>
+                            <input class="form-check-input" type="hidden" role="switch" id="hdnestado" name="estado" value="1">
+                            <label class="form-check-label" for="estado">Estado del proveedor</label>
+                        </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -127,11 +147,14 @@ $rows = $resultado->fetch_all(MYSQLI_ASSOC);
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>¿Desea eliminar el elemento?</p>
+                    <form action="vista/html/proveedor/eliminarProveedor.php" method="post" id="delete-form">
+                        <p>¿Desea eliminar el elemento?</p>
+                        <input type="hidden" name="delete_id" class="delete_id">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <a class="btn btn-danger" href="vista/html/proveedor/eliminarProveedor.php?id=<?php echo $row['documento']; ?>">Eliminar</a>
+                    <button class="btn btn-danger" type="submit">Eliminar</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -140,6 +163,15 @@ $rows = $resultado->fetch_all(MYSQLI_ASSOC);
 </div>
 
 <script>
+    function delProveedor(id) {
+        var documento = id
+        $("#delete-form [name='delete_id']").val(documento);
+    }
+
+    $('#estado').on('change', function() {
+        $('#hdnestado').val(this.checked ? 1 : 0);
+    });
+
     function selectProveedor(document_id) {
 
         var proveedor = document_id
@@ -156,6 +188,8 @@ $rows = $resultado->fetch_all(MYSQLI_ASSOC);
             $("#edit-form [name='email']").val(response[0].email);
             $("#edit-form [name='ciudad']").val(response[0].ciudad);
             $("#edit-form [name='direccion']").val(response[0].direccion);
+            $("#edit-form [name='estado']").val(response[0].estado);
+
         });
     }
 </script>

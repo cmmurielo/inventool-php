@@ -17,6 +17,13 @@ $saldoBodega = (int)$_POST['saldoBodega'];
 $cantidadMinima = (int)$_POST['cantidadMinima'];
 $cantidadMaxima = (int)$_POST['cantidadMaxima'];
 $categoria_id = (int)$_POST['categoria_id'];
+$proveedor_id = (int)$_POST['proveedor_id'];
+
+$mysqli->query("UPDATE producto_proveedor
+                SET 
+                producto_codigo = '$producto_codigo',
+                proveedor_documento = '$proveedor_id'
+                WHERE producto_codigo = '$producto_codigo'");
 
 $mysqli->query("UPDATE productos 
                 SET nombre = '$nombre',

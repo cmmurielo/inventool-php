@@ -34,3 +34,11 @@
     grid-row: 3/4;
     height: 40px;
 }
+
+.estado_activo {
+    background-color: lightgreen;
+}
+
+.estado_inactivo {
+    background-color: lightcoral;
+}

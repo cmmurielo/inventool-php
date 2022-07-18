@@ -11,15 +11,18 @@ $telefono = $_POST['telefono'];
 $email = strtolower($_POST['email']);
 $ciudad = strtoupper($_POST['ciudad']);
 $direccion = strtoupper($_POST['direccion']);
+$estado = (int)$_POST['estado'];
 
 $mysqli->query("UPDATE proveedores 
-                SET tipoPersona = '$tipoPersona',
+                SET 
+                tipoPersona = '$tipoPersona',
                 tipoDocumento = '$tipoDocumento',
                 nombre = '$nombre',
-                    telefono = '$telefono',
-                    email = '$email',
-                    ciudad = '$ciudad',
-                    direccion = '$direccion'
+                telefono = '$telefono',
+                email = '$email',
+                ciudad = '$ciudad',
+                direccion = '$direccion',
+                estado = '$estado'
                 WHERE documento = '$documento'");
 
 header("Location:" . 'http://localhost/inventool-php/index.php?accion=proveedores');

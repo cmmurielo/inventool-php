@@ -35,16 +35,23 @@
             <ul>
                 <?php
                 echo '<li><a href="index.php"><i class="bi bi-house"></i> Pagina principal</a></li>';
-                echo '<li><a href="index.php?accion=clientes"><i class=" bi bi-people-fill"></i> Clientes</a></li>';
-                if ($_SESSION['perfil'] == 'ADMIN' or $_SESSION['perfil'] == 'INVENTARIO') {
+                if ($_SESSION['perfil'] == 'ADMIN') {
+                    echo '<li><a href="index.php?accion=clientes"><i class=" bi bi-people-fill"></i> Clientes</a></li>';
+                    echo '<li><a href="index.php?accion=proveedores"><i class=" bi bi-building"></i> Proveedores</a></li>';
+                    echo '<li><a href="index.php?accion=productos"><i class="bi bi-tools"></i> Productos</a></li>';
+                    echo '<li><a href="index.php?accion=ventas"><i class="bi bi-cart3"></i> Ventas</a></li>';
+                    echo '<li><a href="index.php?accion=usuarios"><i class="bi bi-person-bounding-box"></i> Usuarios</a></li>';
+                }
+                if ($_SESSION['perfil'] == 'INVENTARIO') {
                     echo '<li><a href="index.php?accion=proveedores"><i class=" bi bi-building"></i> Proveedores</a></li>';
                     echo '<li><a href="index.php?accion=productos"><i class="bi bi-tools"></i> Productos</a></li>';
                 }
-                echo '<li><a href="index.php?accion=ventas"><i class="bi bi-cart3"></i> Ventas</a></li>';
 
-                if ($_SESSION['perfil'] == 'ADMIN') {
-                    echo '<li><a href="index.php?accion=usuarios"><i class="bi bi-person-bounding-box"></i> Usuarios</a></li>';
+                if ($_SESSION['perfil'] == 'VENDEDOR') {
+                    echo '<li><a href="index.php?accion=clientes"><i class=" bi bi-people-fill"></i> Clientes</a></li>';
+                    echo '<li><a href="index.php?accion=ventas"><i class="bi bi-cart3"></i> Ventas</a></li>';
                 }
+
                 ?>
             </ul>
 
@@ -55,48 +62,64 @@
             <?php
             if (isset($_GET["accion"])) {
                 if ($_GET["accion"] == "clientes") {
-                    require_once 'vista/html/cliente/clientes.php';
+                    if ($_SESSION['perfil'] == 'ADMIN' or $_SESSION['perfil'] == 'VENDEDOR') {
+                        require_once 'vista/html/cliente/clientes.php';
+                    } else {
+                        require_once 'vista/html/home.php';
+                    }
                 }
                 if ($_GET["accion"] == "productos") {
-                    if ($_SESSION['perfil'] == 'ADMIN' or $_SESSION['perfil'] == 'GERENTE') {
+                    if ($_SESSION['perfil'] == 'ADMIN' or $_SESSION['perfil'] == 'INVENTARIO') {
                         require_once 'vista/html/producto/productos.php';
                     } else {
                         require_once 'vista/html/home.php';
                     }
                 }
                 if ($_GET["accion"] == "proveedores") {
-                    require_once 'vista/html/proveedor/proveedores.php';
+                    if ($_SESSION['perfil'] == 'ADMIN' or $_SESSION['perfil'] == 'INVENTARIO') {
+                        require_once 'vista/html/proveedor/proveedores.php';
+                    } else {
+                        require_once 'vista/html/home.php';
+                    }
                 }
                 if ($_GET["accion"] == "ventas") {
-                    require_once 'vista/html/venta/ventas.php';
+                    if ($_SESSION['perfil'] == 'ADMIN' or $_SESSION['perfil'] == 'VENDEDOR') {
+                        require_once 'vista/html/venta/ventas.php';
+                    } else {
+                        require_once 'vista/html/home.php';
+                    }
                 }
                 if ($_GET["accion"] == "usuarios") {
-                    if ($_SESSION['perfil'] == 'ADMIN' or $_SESSION['perfil'] == 'GERENTE') {
+                    if ($_SESSION['perfil'] == 'ADMIN' or $_SESSION['perfil'] == 'INVENTARIO') {
                         require_once 'vista/html/usuario/usuarios.php';
                     } else {
                         require_once 'vista/html/home.php';
                     }
                 }
                 if ($_GET["accion"] == "agregarCliente") {
-                    require_once 'vista/html/cliente/formCliente.php';
+                    if ($_SESSION['perfil'] == 'ADMIN' or $_SESSION['perfil'] == 'VENDEDOR') {
+                        require_once 'vista/html/cliente/formCliente.php';
+                    } else {
+                        require_once 'vista/html/home.php';
+                    }
                 }
                 if ($_GET["accion"] == "agregarProveedor") {
 
-                    if ($_SESSION['perfil'] == 'ADMIN' or $_SESSION['perfil'] == 'GERENTE') {
+                    if ($_SESSION['perfil'] == 'ADMIN' or $_SESSION['perfil'] == 'INVENTARIO') {
                         require_once 'vista/html/proveedor/formProveedor.php';
                     } else {
                         require_once 'vista/html/home.php';
                     }
                 }
                 if ($_GET["accion"] == "agregarProducto") {
-                    if ($_SESSION['perfil'] == 'ADMIN' or $_SESSION['perfil'] == 'GERENTE' or $_SESSION['perfil'] == 'INVENTARIO') {
+                    if ($_SESSION['perfil'] == 'ADMIN' or $_SESSION['perfil'] == 'INVENTARIO') {
                         require_once 'vista/html/producto/formProducto.php';
                     } else {
                         require_once 'vista/html/home.php';
                     }
                 }
                 if ($_GET["accion"] == "agregarUsuario") {
-                    if ($_SESSION['perfil'] == 'ADMIN' or $_SESSION['perfil'] == 'GERENTE') {
+                    if ($_SESSION['perfil'] == 'ADMIN') {
                         require_once 'vista/html/usuario/formUsuario.php';
                     } else {
                         require_once 'vista/html/home.php';

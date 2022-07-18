@@ -9,9 +9,11 @@ $nombre = strtoupper($_POST['nombre']);
 $apellido = strtoupper($_POST['apellido']);
 $perfil = $_POST['perfil'];
 
+$hash = password_hash($contrasena, PASSWORD_DEFAULT);
+
 $mysqli->query("UPDATE usuarios 
-                SET contrasena = '$contrasena',
-                contrasena = '$contrasena',
+                SET 
+                contrasena = '$hash',
                 nombre = '$nombre',
                 apellido = '$apellido',
                 perfil_id = '$perfil'
