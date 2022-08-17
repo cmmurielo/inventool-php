@@ -1,0 +1,65 @@
+.contenido-formUsuario {
+    padding: 0 16px 16px 16px;
+    display: grid;
+    width: 100%;
+    grid-template-areas:
+        "titulo"
+        "botonera"
+        "formulario";
+    grid-template-rows: 80px 50px auto;
+    justify-content: center;
+    gap: 16px;
+}
+
+.titulo {
+    grid-area: titulo;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botonera {
+    grid-area: botonera;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.grid-form {
+    grid-area: formulario;
+    display: grid;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    grid-template-rows: repeat(6, 50px);
+    gap: 5px;
+}
+
+/* .grid-form input {
+    text-transform: uppercase;
+} */
+
+.form-label {
+    text-align: right;
+}
+
+.label1 {
+    grid-column: 1/2;
+}
+
+.label2 {
+    grid-column: 3/4;
+}
+
+.input1 {
+    grid-column: 2/3;
+}
+
+.input2 {
+    grid-column: 4/5;
+}
+
+.inputFull {
+    grid-column: 2/5;
+}
