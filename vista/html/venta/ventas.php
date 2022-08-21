@@ -14,16 +14,29 @@ $rowIdFactura = $id_factura->fetch_all(MYSQLI_ASSOC);
 <div class="contenido-ventas">
 
     <div class="formulario">
-        <div class="titulo-factura">
-            <h1>FACTURA</h1>
-        </div>
         <form action="vista/html/includes/registrarFactura.php" method="POST" id="form-cliente" autocomplete="on">
+            <div class="titulo-factura">
+                <div class="logoFactura">
+                    <img src="vista/images/logook.png" alt="" srcset="">
+                </div>
+                <div>
+                    <div class="numeroFactura">
+                        <input type="text" name="idFactura" class="form-control" id="idFactura" readonly value="<?php echo $rowIdFactura[0]['factura_id'] + 1 ?>">
+                    </div>
+                </div>
+
+            </div>
             <!-- CLIENTE -->
             <input type="hidden" name="usuario" id="usuario" value="<?php echo $_SESSION['usuario'] ?>">
-            <input type="hidden" name="idFactura" id="idFactura" value="<?php echo $rowIdFactura[0]['factura_id'] + 1 ?>">
+
             <fieldset>
                 <legend>Cliente</legend>
                 <div class="formularioCliente">
+
+
+
+
+
                     <div>
                         <label for="documento" class="form-label">Documento: </label>
                         <input type="text" name="documento" id="documento" class="form-control" onchange="obtenetCliente(this.value)">

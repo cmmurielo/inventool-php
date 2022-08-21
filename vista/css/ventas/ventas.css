@@ -5,8 +5,33 @@
     padding: 16px;
 }
 
+.titulo-factura {
+    display: grid;
+    grid-template-areas: "logo factura";
+}
+
+.logoFactura {
+    display: flex;
+    grid-area: logo;
+    justify-content: center;
+}
+.numeroFactura {
+    display: flex;
+    justify-content: right;
+    height: 100%;
+    align-items: flex-end;
+}
+
+.numeroFactura input {
+    grid-area: factura;
+    text-align: right;
+    height: 60px;
+    width: 50%;
+    font-size: xx-large;
+}
+
 .formulario {
-    padding: 5px;
+    padding: 24px;
     background-color: white;
     border-radius: 5px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
