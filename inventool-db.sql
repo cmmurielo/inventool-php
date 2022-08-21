@@ -79,13 +79,14 @@ DROP TABLE IF EXISTS `detalle_factura`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `detalle_factura` (
-  `valor` float NOT NULL,
-  `cantidad` int NOT NULL,
   `factura_id` bigint unsigned NOT NULL,
   `producto_codigo` bigint unsigned NOT NULL,
+  `cantidad` int NOT NULL,
+  `descuento` int unsigned NOT NULL DEFAULT '0',
+  `valor` float NOT NULL,
   KEY `fk_detalle_factura_facturas1_idx` (`factura_id`),
   KEY `fk_detalle_factura_productos1_idx` (`producto_codigo`),
-  CONSTRAINT `fk_detalle_factura_facturas1` FOREIGN KEY (`factura_id`) REFERENCES `facturas` (`factura_id`),
+  CONSTRAINT `fk_detalle_factura_facturas1` FOREIGN KEY (`factura_id`) REFERENCES `facturas` (`factura_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_detalle_factura_productos1` FOREIGN KEY (`producto_codigo`) REFERENCES `productos` (`producto_codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -108,9 +109,10 @@ DROP TABLE IF EXISTS `facturas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `facturas` (
   `factura_id` bigint unsigned NOT NULL,
-  `fechaFactura` datetime NOT NULL,
+  `fechaFactura` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `cliente_documento` bigint unsigned NOT NULL,
   `usuarios_usuario` varchar(16) NOT NULL,
+  `valor` float unsigned NOT NULL,
   PRIMARY KEY (`factura_id`),
   UNIQUE KEY `id_factura_UNIQUE` (`factura_id`),
   KEY `fk_facturas_clientes1_idx` (`cliente_documento`),
@@ -126,6 +128,7 @@ CREATE TABLE `facturas` (
 
 LOCK TABLES `facturas` WRITE;
 /*!40000 ALTER TABLE `facturas` DISABLE KEYS */;
+INSERT INTO `facturas` VALUES (10000000,'2022-08-21 18:28:32',1053812639,'admin',0);
 /*!40000 ALTER TABLE `facturas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,7 +214,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (268413,'Set Puntas Touch Case 18 Piezas Ref DW2174','Incluye: 18 piezas - (1) Guía magnética compacta - (3) puntas de 3-1/2 pulgadas: Cruz #1 y #2, Cuadrada SQ\" - (6) Puntas de 2 pulgadas: Cruz #2 (5 piezas), Cuadrada SQ2 - (8) Puntas de 1 pulgada: Cruz #1, #2 (2 piezas) y #3, Plana SL8 (2 piezas), Cuadrada SQ2 (2 piezas) - Estuche Plástico',55900,9,2,10,'268413.jpg',1666),(543292,'SIERRA CIRCULAR 7-1/4-PULG 20V SIN BATERíA DEWALT','Sierra Circular 7-1/4-pulg 20V Sin Batería Dewalt | Herramientas y Maquinarias\r\n',989000,2,1,5,'543292.jpg',1667);
+INSERT INTO `productos` VALUES (268413,'Set Puntas Touch Case 18 Piezas Ref DW2174','Incluye: 18 piezas - (1) Guía magnética compacta - (3) puntas de 3-1/2 pulgadas: Cruz #1 y #2, Cuadrada SQ\" - (6) Puntas de 2 pulgadas: Cruz #2 (5 piezas), Cuadrada SQ2 - (8) Puntas de 1 pulgada: Cruz #1, #2 (2 piezas) y #3, Plana SL8 (2 piezas), Cuadrada SQ2 (2 piezas) - Estuche Plástico',55900,5,2,10,'268413.jpg',1666),(543292,'SIERRA CIRCULAR 7-1/4-PULG 20V SIN BATERíA DEWALT','Sierra Circular 7-1/4-pulg 20V Sin Batería Dewalt | Herramientas y Maquinarias\r\n',989000,2,1,5,'543292.jpg',1667);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -287,4 +290,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-17 20:11:28
+-- Dump completed on 2022-08-21 17:05:30
