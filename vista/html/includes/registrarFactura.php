@@ -27,4 +27,4 @@ foreach ($detalles as $detalle) {
             WHERE producto_codigo = '$detalle[0]'");
 }
 
-// header("Location:" . 'http://localhost/inventool-php/index.php?accion=ventas');
+header("Location:" . 'http://localhost/inventool-php/index.php?accion=ventas');
