@@ -2,14 +2,25 @@
     <link rel="stylesheet" href="vista/css/ventas/ventas.css" />
 </head>
 
+<?php
+include_once($_SERVER['DOCUMENT_ROOT'] . '/inventool-php/dirs.php');
+$mysqli = include(ROOT_PATH . "db.php");
+$id_factura = $mysqli->query("SELECT max(factura_id) as factura_id from facturas");
+$rowIdFactura = $id_factura->fetch_all(MYSQLI_ASSOC);
+
+
+?>
+
 <div class="contenido-ventas">
 
     <div class="formulario">
         <div class="titulo-factura">
             <h1>FACTURA</h1>
         </div>
-        <form action="post" id="form-cliente">
+        <form action="vista/html/includes/registrarFactura.php" method="POST" id="form-cliente" autocomplete="on">
             <!-- CLIENTE -->
+            <input type="hidden" name="usuario" id="usuario" value="<?php echo $_SESSION['usuario'] ?>">
+            <input type="hidden" name="idFactura" id="idFactura" value="<?php echo $rowIdFactura[0]['factura_id'] + 1 ?>">
             <fieldset>
                 <legend>Cliente</legend>
                 <div class="formularioCliente">
@@ -54,7 +65,7 @@
                     </div>
                     <div>
                         <label for="cantidad" class="form-label">Cantidad</label>
-                        <input type="number" name="cantidad" id="cantidad" class="form-control" value="1" onchange="calcularValorPorCantidad(this.value)">
+                        <input type="number" name="cantidad" id="cantidad" class="form-control" min="1" value="1" onchange="calcularValorPorCantidad(this.value)">
                     </div>
                     <div>
                         <label for="valor_initario" class="form-label">Valor Unidad</label>
@@ -66,7 +77,7 @@
                     </div>
                     <div>
                         <label for="descuento" class="form-label">Desc %</label>
-                        <input type="number" name="descuento" id="descuento" class="form-control" value="0" onchange="calcularValorPorDescuento(this.value)">
+                        <input type="number" name="descuento" id="descuento" class="form-control" min="0" value="0" onchange="calcularValorPorDescuento(this.value)">
                     </div>
                     <div>
                         <label for="valor_total" class="form-label">Valor Total</label>
@@ -117,31 +128,26 @@
                 <legend>Totales</legend>
                 <div class="formularioTotales">
                     <div class="totales">
-                        <label for="subtotal" class="form-label">Subtotal</label>
-                        <input type="number" name="subtotal" id="subtotal" class="form-control" value="1100800">
+                        <label for="valorSinIVA" class="form-label">Valor antes de IVA</label>
+                        <input type="number" name="valorSinIVA" id="valorSinIVA" class="form-control" readonly>
                     </div>
                     <div class="totales">
-                        <label for="descuento" class="form-label">Descuento</label>
-                        <input type="number" name="descuento" id="descuento" class="form-control" value="0">
+                        <label for="ivaFactura" class="form-label">IVA</label>
+                        <input type="number" name="ivaFactura" id="ivaFactura" class="form-control" readonly>
                     </div>
                     <div class="totales">
-                        <label for="iva" class="form-label">Valor antes de IVA</label>
-                        <input type="number" name="iva" id="iva" class="form-control" value="891648">
+                        <label for="valor_netoFactura" class="form-label">Valor Neto</label>
+                        <input type="number" name="valor_netoFactura" id="valor_netoFactura" class="form-control" readonly>
                     </div>
-                    <div class="totales">
-                        <label for="iva" class="form-label">IVA</label>
-                        <input type="number" name="iva" id="iva" class="form-control" value="209152">
-                    </div>
-                    <div class="totales">
-                        <label for="valor_neto" class="form-label">Valor Neto</label>
-                        <input type="number" name="valor_neto" id="valor_neto" class="form-control" value="1100800">
-                    </div>
+
+                    <input type="hidden" name="detalles" id="detalles">
+
                     <div class="btnFacturar">
-                        <input type="button" value="Facturar" class="btn btn-success">
+                        <input type="submit" value="Facturar" class="btn btn-success">
                     </div>
 
                     <div class="btnAnular">
-                        <button class="btn btn-warning">Anular</button>
+                        <button class="btn btn-warning" type="reset">Anular</button>
                     </div>
                 </div>
             </fieldset>
@@ -203,6 +209,9 @@
     }
 
     function agregarProductoADetalle() {
+        var sumaSubtotales = 0;
+        var valorAntesDeIVA = 0;
+        var iva = 0;
 
         var codigo = document.getElementById('codigo').value;
         var producto = document.getElementById('producto').value;
@@ -233,9 +242,20 @@
             for (var j = 0; j < detalleProducto[i].length; j++) {
                 result += "<td>" + detalleProducto[i][j] + "</td>";
             }
+            sumaSubtotales += parseInt(detalleProducto[i][3]);
             result += "</tr>";
         }
         result += "</tbody>";
-        document.getElementById("detalleProductos").innerHTML = result
+
+        document.getElementById("valor_netoFactura").value = sumaSubtotales;
+
+        iva = sumaSubtotales * 19 / 100;
+        valorAntesDeIVA = sumaSubtotales - iva;
+
+        document.getElementById("detalleProductos").innerHTML = result;
+        document.getElementById("valorSinIVA").value = valorAntesDeIVA;
+        document.getElementById("ivaFactura").value = iva;
+
+        document.getElementById("detalles").value = JSON.stringify(detalleProducto);
     }
 </script>
