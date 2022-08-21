@@ -123,7 +123,7 @@ $rowsProveedor = $resultadoProveedor->fetch_all(MYSQLI_ASSOC);
                         <label for="cantidadMaxima" class="form-label label2">Cant. Maxima: *</label>
                         <input type="number" id="cantidadMaxima" name="cantidadMaxima" class="form-control input2" required />
 
-                        <label for="proveedor_id" class="form-label label1">Tipo nombre:</label>
+                        <label for="proveedor_id" class="form-label label1">Proveedor:</label>
                         <select name="proveedor_id" id="proveedor_id" class="form-select input1">
                             <option value="">Selecciona el proveedor</option>
                             <?php
@@ -134,7 +134,7 @@ $rowsProveedor = $resultadoProveedor->fetch_all(MYSQLI_ASSOC);
 
                         </select>
 
-                        <label for="categoria_id" class="form-label label1">Tipo nombre:</label>
+                        <label for="categoria_id" class="form-label label1">Categoria:</label>
                         <select name="categoria_id" id="categoria_id" class="form-select input1">
                             <option value="">Selecciona la categoria</option>
                             <?php
@@ -145,7 +145,7 @@ $rowsProveedor = $resultadoProveedor->fetch_all(MYSQLI_ASSOC);
 
                         </select>
 
-                        <label for="imagen" class="form-label label1">imagen: </label>
+                        <label for="imagen" class="form-label label1">Imagen del producto: </label>
                         <input type="file" id="" name="imagen" id="imagen" class="form-control inputFull" />
                 </div>
                 <div class="modal-footer">
