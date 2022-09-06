@@ -52,7 +52,7 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
                     <td> <?php echo $row['apellido']; ?></td>
                     <td> <?php echo $row['perfil']; ?></td>
                     <td><a class="btn btn-primary editbtn" onclick="selectUsuario('<?php echo $row['usuario']; ?>')" data-bs-toggle="modal" data-bs-target="#editarModal"><i class="bi bi-pencil"></i></a></td>
-                    <td><button class="btn btn-warning" onclick="delUsuario('<?php echo $row['usuario']; ?>')" data-bs-toggle="modal" data-bs-target="#CambiarClaveModal"><i class="bi bi-key"></i></button></td>
+                    <td><button class="btn btn-warning" onclick="selectUsuario('<?php echo $row['usuario']; ?>')" data-bs-toggle="modal" data-bs-target="#CambiarClaveModal"><i class="bi bi-key"></i></button></td>
                     <td><button class="btn btn-danger" onclick="delUsuario('<?php echo $row['usuario']; ?>')" data-bs-toggle="modal" data-bs-target="#borrarModal"><i class="bi bi-trash"></i></button></td>
                 </tr>
             <?php } ?>
@@ -105,11 +105,11 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Cambiar Clave</h5>
+                    <h5 class="modal-title" id="CambiarClaveModal">Cambiar Clave</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="vista/html/usuario/editarClaveUsuario.php" method="POST" class="grid-form" id="edit-form">
+                    <form action="vista/html/usuario/editarClaveUsuario.php" method="POST" class="grid-form">
 
                         <input type="hidden" name="usuario" id="usuario">
 
@@ -127,10 +127,7 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
         </div>
     </div>
 
-
-
-
-    <!-- Modal Delete -->
+    <!-- Modal Borrar -->
     <div class="modal fade" id="borrarModal" tabindex="-1" aria-labelledby="borrarModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
