@@ -52,7 +52,7 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
                     <td> <?php echo $row['apellido']; ?></td>
                     <td> <?php echo $row['perfil']; ?></td>
                     <td><a class="btn btn-primary editbtn" onclick="selectUsuario('<?php echo $row['usuario']; ?>')" data-bs-toggle="modal" data-bs-target="#editarModal"><i class="bi bi-pencil"></i></a></td>
-                    <td><button class="btn btn-warning" onclick="selectUsuario('<?php echo $row['usuario']; ?>')" data-bs-toggle="modal" data-bs-target="#CambiarClaveModal"><i class="bi bi-key"></i></button></td>
+                    <td><button class="btn btn-warning" onclick="cambiarClave('<?php echo $row['usuario']; ?>')" data-bs-toggle="modal" data-bs-target="#CambiarClaveModal"><i class="bi bi-key"></i></button></td>
                     <td><button class="btn btn-danger" onclick="delUsuario('<?php echo $row['usuario']; ?>')" data-bs-toggle="modal" data-bs-target="#borrarModal"><i class="bi bi-trash"></i></button></td>
                 </tr>
             <?php } ?>
@@ -109,7 +109,7 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="vista/html/usuario/editarClaveUsuario.php" method="POST" class="grid-form">
+                    <form action="vista/html/usuario/editarClaveUsuario.php" method="POST" class="grid-form" id="contrasena-form">
 
                         <input type="hidden" name="usuario" id="usuario">
 
@@ -155,6 +155,11 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
     function delUsuario(id) {
         var documento = id
         $("#delete-form [name='delete_id']").val(documento);
+    }
+
+    function cambiarClave(id) {
+        var usuario = id
+        $("#contrasena-form [name='usuario']").val(usuario);
     }
 
     function selectUsuario(usuario_id) {

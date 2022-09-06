@@ -16,3 +16,4 @@ $mysqli->query("UPDATE usuarios
 $host  = $_SERVER['HTTP_HOST'];
 $extra = 'index.php?accion=usuarios';
 header("Location: http://$host/inventool-php/$extra");
+exit();
