@@ -11,7 +11,6 @@ $hash = password_hash($contrasena, PASSWORD_DEFAULT);
 $mysqli->query("UPDATE usuarios 
                 SET 
                 contrasena = '$hash',
-                perfil_id = '$perfil'
                 WHERE usuario = '$usuario'");
 
 $host  = $_SERVER['HTTP_HOST'];
