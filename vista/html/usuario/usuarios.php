@@ -109,7 +109,7 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="vista/html/usuario/editarClaveUsuario.php" method="POST" class="grid-form" id="contrasena-form">
+                    <form action="vista/html/usuario/editarClave.php" method="POST" class="grid-form" id="contrasena-form">
 
                         <input type="hidden" name="usuario" id="usuario">
 
