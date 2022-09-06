@@ -12,6 +12,5 @@ $mysqli->query("INSERT INTO ventas (factura_id, fechaFactura, cliente_documento,
                 VALUES ('$factura_id','$fechaFactura, $cliente_documento, $usarios_usuario'");
 
 $host  = $_SERVER['HTTP_HOST'];
-$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 $extra = 'index.php?accion=ventas';
-header("Location: http://$host$uri/$extra");
+header("Location: http://$host/inventool-php/$extra");

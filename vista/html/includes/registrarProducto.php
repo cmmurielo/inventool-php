@@ -27,6 +27,5 @@ $mysqli->query("INSERT INTO productos (producto_codigo, nombre, descripcion, cos
                 VALUES ('$producto_codigo','$nombre', '$descripcion', '$costo','$saldoBodega','$cantidadMinima','$cantidadMaxima','$categoria_id' , '$nombre_imagen')");
 
 $host  = $_SERVER['HTTP_HOST'];
-$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 $extra = 'index.php?accion=productos';
-header("Location: http://$host$uri/$extra");
+header("Location: http://$host/inventool-php/$extra");

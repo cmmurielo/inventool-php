@@ -24,4 +24,6 @@ $mysqli->query("UPDATE clientes
                     direccion = '$direccion'
                 WHERE documento = '$documento'");
 
-header("Location:" . 'http://localhost/inventool-php/index.php?accion=clientes');
+$host  = $_SERVER['HTTP_HOST'];
+$extra = 'index.php?accion=clientes';
+header("Location: http://$host/inventool-php/$extra");

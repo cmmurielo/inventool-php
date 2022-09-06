@@ -8,8 +8,6 @@ $resultado = $mysqli->query("DELETE FROM usuarios WHERE usuario = '$usuario' ");
 
 
 $host  = $_SERVER['HTTP_HOST'];
-$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 $extra = 'index.php?accion=usuarios';
 header("Location: http://$host/inventool-php/$extra");
-
 exit();

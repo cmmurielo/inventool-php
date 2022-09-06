@@ -25,4 +25,6 @@ $mysqli->query("UPDATE proveedores
                 estado = '$estado'
                 WHERE documento = '$documento'");
 
-header("Location:" . 'http://localhost/inventool-php/index.php?accion=proveedores');
+$host  = $_SERVER['HTTP_HOST'];
+$extra = 'index.php?accion=proveedores';
+header("Location: http://$host/inventool-php/$extra");

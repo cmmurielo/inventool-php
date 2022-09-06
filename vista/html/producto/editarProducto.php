@@ -36,5 +36,6 @@ $mysqli->query("UPDATE productos
                 imagen = '$imagen'
                 WHERE producto_codigo = '$producto_codigo'");
 
-
-header("Location:" . 'http://localhost/inventool-php/index.php?accion=productos');
+$host  = $_SERVER['HTTP_HOST'];
+$extra = 'index.php?accion=productos';
+header("Location: http://$host/inventool-php/$extra");

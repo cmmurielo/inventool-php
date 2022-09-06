@@ -19,6 +19,5 @@ $mysqli->query(" INSERT INTO clientes (documento, tipoDocumento, tipoPersona, no
                 VALUES ('$documento','$tipoDocumento', '$tipoPersona', '$nombre','$apellido','$telefono','$email','$ciudad','$direccion')");
 
 $host  = $_SERVER['HTTP_HOST'];
-$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 $extra = 'index.php?accion=clientes';
-header("Location: http://$host$uri/$extra");
+header("Location: http://$host/inventool-php/$extra");

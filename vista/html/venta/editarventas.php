@@ -18,4 +18,6 @@ $mysqli->query("UPDATE ventas
                 estado = '$estado'
                 WHERE factura_id = '$factura_id'");
 
-header("Location:" . 'http://localhost/inventool-php/index.php?accion=proveedores');
+$host  = $_SERVER['HTTP_HOST'];
+$extra = 'index.php?accion=ventas';
+header("Location: http://$host/inventool-php/$extra");
