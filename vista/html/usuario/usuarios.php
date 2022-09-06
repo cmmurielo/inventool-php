@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="vista/css/usuario/usuario.css" />
+    <link rel="stylesheet" href="vista/css/usuario/usuarios.css" />
     <link rel="stylesheet" href="vista/css/usuario/modalUsuario.css" />
 </head>
 
