@@ -38,7 +38,7 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
                 <th scope="col">Perfil</th>
-                <th scope="col" colspan="2">Opciones</th>
+                <th scope="col" colspan="3">Opciones</th>
             </tr>
         </thead>
 
@@ -52,6 +52,7 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
                     <td> <?php echo $row['apellido']; ?></td>
                     <td> <?php echo $row['perfil']; ?></td>
                     <td><a class="btn btn-primary editbtn" onclick="selectUsuario('<?php echo $row['usuario']; ?>')" data-bs-toggle="modal" data-bs-target="#editarModal"><i class="bi bi-pencil"></i></a></td>
+                    <td><button class="btn btn-warning" onclick="delUsuario('<?php echo $row['usuario']; ?>')" data-bs-toggle="modal" data-bs-target="#CambiarClaveModal"><i class="bi bi-key"></i></button></td>
                     <td><button class="btn btn-danger" onclick="delUsuario('<?php echo $row['usuario']; ?>')" data-bs-toggle="modal" data-bs-target="#borrarModal"><i class="bi bi-trash"></i></button></td>
                 </tr>
             <?php } ?>
@@ -59,7 +60,7 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
     </table>
 
 
-    <!-- Modal edit -->
+    <!-- Modal editar -->
     <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -72,9 +73,6 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
 
                         <label for="usuario" class="form-label">Usuario: </label>
                         <input type="text" name="usuario" id="usuario" class="form-control" readonly>
-
-                        <label for="contrasena" class="form-label">Contraseña: </label>
-                        <input type="password" name="contrasena" id="contrasena" class="form-control" autocomplete="off">
 
                         <label for="nombre" class="form-label">Nombre: </label>
                         <input type="text" name="nombre" id="nombre" class="form-control">
@@ -101,6 +99,36 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
             </div>
         </div>
     </div>
+
+    <!-- Modal cambiar clave -->
+    <div class="modal fade" id="CambiarClaveModal" tabindex="-1" aria-labelledby="CambiarClaveModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Cambiar Clave</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="vista/html/usuario/editarClaveUsuario.php" method="POST" class="grid-form" id="edit-form">
+
+                        <input type="hidden" name="usuario" id="usuario">
+
+                        <label for="contrasena" class="form-label">Contraseña: </label>
+                        <input type="password" name="contrasena" id="contrasena" class="form-control" autocomplete="off">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-success input2">Guardar</button>
+                </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+
 
     <!-- Modal Delete -->
     <div class="modal fade" id="borrarModal" tabindex="-1" aria-labelledby="borrarModalLabel" aria-hidden="true">
@@ -139,7 +167,6 @@ $rowsPerfiles = $perfiles->fetch_all(MYSQLI_ASSOC);
         }, function(data) {
             response = JSON.parse(data)
             $("#edit-form [name='usuario']").val(response[0].usuario);
-            $("#edit-form [name='contrasena']").val(response[0].contrasena);
             $("#edit-form [name='nombre']").val(response[0].nombre);
             $("#edit-form [name='apellido']").val(response[0].apellido);
             $("#edit-form [name='perfil']").val(parseInt(response[0].perfil_id));
