@@ -7,8 +7,6 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/inventool-php/dirs.php');
 $mysqli = include(ROOT_PATH . "db.php");
 $id_factura = $mysqli->query("SELECT max(factura_id) as factura_id from facturas");
 $rowIdFactura = $id_factura->fetch_all(MYSQLI_ASSOC);
-
-
 ?>
 
 <div class="contenido-ventas">
@@ -32,10 +30,6 @@ $rowIdFactura = $id_factura->fetch_all(MYSQLI_ASSOC);
             <fieldset>
                 <legend>Cliente</legend>
                 <div class="formularioCliente">
-
-
-
-
 
                     <div>
                         <label for="documento" class="form-label">Documento: </label>
