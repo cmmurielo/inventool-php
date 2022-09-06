@@ -15,4 +15,7 @@ $direccion = strtoupper($_POST['direccion']);
 $mysqli->query("INSERT INTO proveedores (documento, tipoPersona, tipoDocumento, nombre, telefono, email, ciudad, direccion)
                 VALUES ('$documento','$tipoPersona', '$tipoDocumento', '$nombre','$telefono','$email','$ciudad','$direccion')");
 
-header("Location:" . 'http://localhost/inventool-php/index.php?accion=proveedores');
+$host  = $_SERVER['HTTP_HOST'];
+$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+$extra = 'index.php?accion=proveedores';
+header("Location: http://$host$uri/$extra");

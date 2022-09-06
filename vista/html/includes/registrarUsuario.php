@@ -14,4 +14,7 @@ $hash = password_hash($contrasena, PASSWORD_DEFAULT);
 $mysqli->query("INSERT INTO usuarios (usuario, contrasena, nombre, apellido, perfil_id)
                 VALUES ('$usuario','$hash', '$nombre', '$apellido','$perfil')");
 
-header("Location:" . 'http://localhost/inventool-php/index.php?accion=usuarios');
+$host  = $_SERVER['HTTP_HOST'];
+$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+$extra = 'index.php?accion=usuarios';
+header("Location: http://$host$uri/$extra");
