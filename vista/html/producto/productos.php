@@ -73,7 +73,7 @@ $rowsProveedor = $resultadoProveedor->fetch_all(MYSQLI_ASSOC);
                 <tr>
                     <td scope="row"> <?php echo $row['producto_codigo']; ?></td>
                     <td> <?php echo $row['nombre']; ?></td>
-                    <td> <?php echo $row['descripcion']; ?></td>
+                    <td style="overflow: hidden;"> <?php echo $row['descripcion']; ?></td>
                     <td> <?php echo $row['costo']; ?></td>
                     <td> <?php echo $row['saldoBodega']; ?></td>
                     <td> <?php echo $row['cantidadMinima']; ?></td>
