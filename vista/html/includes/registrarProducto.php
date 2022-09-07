@@ -14,7 +14,7 @@ echo $tipo_imagen;
 $tamagno_imagen = $_FILES['imagen']['size'];
 echo $tamagno_imagen;
 $imagen_tmp = $_FILES['imagen']['tmp_name'];
-// move_uploaded_file($imagen_tmp, $directorio_imagen . $nombre_imagen);
+move_uploaded_file($imagen_tmp, $directorio_imagen . $nombre_imagen);
 
 // $producto_codigo = (int)$_POST['producto_codigo'];
 // $nombre = strtoupper($_POST['nombre']);
