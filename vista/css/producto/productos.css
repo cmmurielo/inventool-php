@@ -33,6 +33,8 @@
 .grid-table {
     grid-row: 3/4;
     height: 40px;
+    table-layout: fixed;
+    border-collapse: collapse;
 }
 
 .td-descripcion {
