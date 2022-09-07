@@ -33,7 +33,7 @@ $rowsProveedor = $resultadoProveedor->fetch_all(MYSQLI_ASSOC);
         <label for="nombre" class="form-label label2">Nombre: * </label>
         <input type="text" name="nombre" id="nombre" class="form-control input2" required />
 
-        <label for="descripcion" class="form-label label1">descripcion: </label>
+        <label for="descripcion" class="form-label label1">Descripcion: </label>
         <textarea name="descripcion" id="descripcion" class="form-control inputFull" cols="10" rows="5"></textarea>
 
         <label for="costo" class="form-label label1">Valor: * </label>
