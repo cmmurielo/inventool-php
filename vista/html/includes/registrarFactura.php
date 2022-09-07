@@ -1,13 +1,14 @@
 <?php
 
-include_once($_SERVER['DOCUMENT_ROOT'] . '/inventool-php/dirs.php');
-$mysqli = include(ROOT_PATH . "db.php");
+// include_once($_SERVER['DOCUMENT_ROOT'] . '/inventool-php/dirs.php');
+// $mysqli = include(ROOT_PATH . "db.php");
 
-$idFactura = (int)$_POST['idFactura'];
-$fecha = $_POST['fecha'];
-$documento = (int)$_POST['documento'];
-$usuario = $_POST['usuario'];
-$valor = (int)$_POST['valor_netoFactura'];
+// $idFactura = (int)$_POST['idFactura'];
+// $fecha = $_POST['fecha'];
+// $documento = (int)$_POST['documento'];
+// $usuario = $_POST['usuario'];
+// $valor = (int)$_POST['valor_netoFactura'];
+echo 'Hola';
 
 print_r($_POST);
 
