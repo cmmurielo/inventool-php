@@ -13,12 +13,10 @@ $totalValorInventario = (float)0;
 
 foreach ($productosRows as $productoRow) {
     $totalPiezas += $productoRow['saldoBodega'];
-    $totalValorInventario += $productoRow['costo'];
+    $totalValorInventario += $productoRow['costo'] * $productoRow['saldoBodega'];
 }
 
 ?>
-
-
 
 <head>
     <link rel="stylesheet" href="vista/css/main.css">
