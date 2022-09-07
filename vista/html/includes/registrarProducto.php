@@ -26,12 +26,11 @@ $mysqli->query("INSERT INTO productos (producto_codigo, nombre, descripcion, cos
                 VALUES ('$producto_codigo','$nombre', '$descripcion', '$costo','$saldoBodega','$cantidadMinima','$cantidadMaxima','$categoria_id' , '$nombre_imagen')");
 try {
     $mysqli->query("INSERT INTO producto_proveedor (producto_codigo, proveedor_documento)
-                    VALUES ('$producto_codigo','$proveedor_id'");
+                    VALUES ('$producto_codigo','$proveedor_id')");
 } catch (\Throwable $th) {
     echo 'Se produjo un error: ' . $th;
 }
 
-
-// $host  = $_SERVER['HTTP_HOST'];
-// $extra = 'index.php?accion=productos';
-// header("Location: http://$host/inventool-php/$extra");
+$host  = $_SERVER['HTTP_HOST'];
+$extra = 'index.php?accion=productos';
+header("Location: http://$host/inventool-php/$extra");
