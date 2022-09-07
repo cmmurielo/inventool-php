@@ -34,3 +34,8 @@
     grid-row: 3/4;
     height: 40px;
 }
+
+.grid-table td {
+    overflow: hidden;
+    white-space: nowrap;
+}

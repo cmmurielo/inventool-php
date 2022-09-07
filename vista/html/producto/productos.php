@@ -43,7 +43,7 @@ $rowsProveedor = $resultadoProveedor->fetch_all(MYSQLI_ASSOC);
     <div class="buscar">
         <p>
             Buscar productos:
-            <span><input type="text" name="buscar" placeholder="Documento, Nombre..." /></span>
+            <span><input type="text" name="buscar" placeholder="Codigo, Nombre..." /></span>
         </p>
         <button class="btn btn-success" onclick=" location.href='index.php?accion=agregarProducto'">
             Agregar producto
