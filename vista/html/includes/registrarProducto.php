@@ -5,11 +5,15 @@ $mysqli = include(ROOT_PATH . "db.php");
 
 print_r($_POST);
 
-// $directorio_imagen = FILES_PATH . 'productos/';
-// $nombre_imagen = $_FILES['imagen']['name'];
-// $tipo_imagen = $_FILES['imagen']['type'];
-// $tamagno_imagen = $_FILES['imagen']['size'];
-// $imagen_tmp = $_FILES['imagen']['tmp_name'];
+$directorio_imagen = FILES_PATH . 'productos/';
+echo $directorio_imagen;
+$nombre_imagen = $_FILES['imagen']['name'];
+echo $nombre_imagen;
+$tipo_imagen = $_FILES['imagen']['type'];
+echo $tipo_imagen;
+$tamagno_imagen = $_FILES['imagen']['size'];
+echo $tamagno_imagen;
+$imagen_tmp = $_FILES['imagen']['tmp_name'];
 // move_uploaded_file($imagen_tmp, $directorio_imagen . $nombre_imagen);
 
 // $producto_codigo = (int)$_POST['producto_codigo'];
