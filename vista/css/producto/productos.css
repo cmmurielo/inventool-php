@@ -35,6 +35,14 @@
     height: 40px;
 }
 
+.grid-table {
+    width: 250px;
+    table-layout: fixed;
+}
+.grid-table tr {
+    height: 1em;
+}
+
 .grid-table td {
     overflow: hidden;
     white-space: nowrap;
