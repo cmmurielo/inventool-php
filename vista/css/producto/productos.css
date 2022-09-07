@@ -35,3 +35,10 @@
     height: 40px;
     table-layout: fixed;
 }
+
+.td-descripcion {
+    width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
