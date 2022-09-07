@@ -53,20 +53,20 @@ foreach ($productosRows as $productoRow) {
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Ventas Dia</h5>
-                <?php echo '<p class="card-text"> $ 999.999</p>' ?>
+                <?php echo '<p class="card-text"> #TODO </p>' ?>
             </div>
         </div>
 
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Ventas Dia</h5>
-                <?php echo '<p class="card-text"> $ 999.999</p>' ?>
+                <?php echo '<p class="card-text"> #TODO </p>' ?>
             </div>
         </div>
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Ventas Dia</h5>
-                <?php echo '<p class="card-text"> $ 999.999</p>' ?>
+                <?php echo '<p class="card-text"> #TODO </p>' ?>
             </div>
         </div>
 
